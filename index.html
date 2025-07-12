@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="home">
+      <nav class="nav">
+        <a href="/"> <img src="" alt="logo" class="logo" /></a>
+        <ul class="nav__list--items">
+          <li><a href="">Features</a></li>
+          <li><a href="./pages/todos.html">Tasks</a></li>
+          <li class="nav-login"><a href="../pages/login.html">Log in</a></li>
+          <li class="nav-signup"><a href="../pages/signup.html">sign up</a></li>
+          <li class="nav-logout hidden"><a href="">log out</a></li>
+        </ul>
+        <a href="./pages/about.html" class="nav-user">
+          <span class="nav-username">Eko Gift</span>
+          <ion-icon
+            name="person-circle-outline"
+            class="person-circle-outline"
+          ></ion-icon>
+        </a>
+      </nav>
+
+      <header class="header">
+        <div class="left">
+          <hgroup class="heading" id="heading" draggable="true">
+            <h1 class="heading-heading">Create tasks</h1>
+            <p class="heading-subheading">for the day</p>
+          </hgroup>
+
+          <button class="btn">start todoling</button>
+        </div>
+
+        <div class="right"></div>
+      </header>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

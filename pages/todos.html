@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <script>
+      const token = localStorage.getItem("jwt");
+      if (!token) {
+        window.location.href = "login.html";
+      }
+    </script>
+    <nav class="nav">
+      <a href="/"> <img src="" alt="logo" class="logo" /></a>
+      <ul class="nav__list--items">
+        <li><a href="">Features</a></li>
+        <li><a href="./pages/todos.html">Tasks</a></li>
+        <li class="nav-login"><a href="../pages/login.html">Log in</a></li>
+        <li class="nav-signup"><a href="../pages/signup.html">sign up</a></li>
+        <li class="nav-logout hidden"><a href="">log out</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-todos">
+      <div class="todo-task">
+        <div class="todo-task-heading">
+          <div>
+            <h2>Todo Task</h2>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores
+              laudantiums.
+            </p>
+          </div>
+
+          <div>
+            <button class="btn btn-add-todo">
+              <ion-icon name="add-outline"></ion-icon> <span>New Task</span>
+            </button>
+          </div>
+        </div>
+
+        <ul class="todo-task-lists">
+          <p class="no-todo-tasks hidden">
+            No task available for you. please try adding a task today, <br />by
+            click '+ new task' button above
+          </p>
+          <li class="todo-task-item" draggable="true">
+            <input type="checkbox" name="isCompleted" class="todo-task-input" />
+            <div class="content">
+              <h3>Todo heading</h3>
+              <p>Summary of the today</p>
+              <p class="due-date-container">
+                <span> <span>due date:</span> <span>12/05/2025</span></span>
+                <span> <span>created date:</span> <span>12/04/2025</span></span>
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <form action="" class="form form-add-task hidden">
+        <div class="form-heading">
+          <h2>Add New List</h2>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Consequatur, voluptatum?
+          </p>
+        </div>
+
+        <div class="form-group">
+          <div class="form-row">
+            <label for="task-name">Task Name</label>
+            <input
+              class="form__input form__input--task-name"
+              id="task-name"
+              type="password"
+              placeholder="Enter your task name"
+              name="title"
+            />
+          </div>
+
+          <div class="form-row">
+            <label for="task-due-date">Due Date</label>
+
+            <input
+              type="datetime-local"
+              id="meeting-time"
+              name="meeting-time"
+              class="form__input form__input--task-due-date"
+            />
+          </div>
+
+          <div class="form-row">
+            <label for="task-description">Description</label>
+            <textarea
+              name="description"
+              placeholder="Description of the task"
+              class="form-textarea-add"
+            ></textarea>
+          </div>
+        </div>
+        <button class="btn btn-add">Add Task</button>
+      </form>
+
+      <div class="todo-task">
+        <div class="todo-task-heading">
+          <div>
+            <h2>Todo Tasks Completed 🎉</h2>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores
+              laudantiums.
+            </p>
+          </div>
+        </div>
+
+        <ul class="todo-task-lists-completed">
+          <li class="todo-task-item" draggable="true">
+            <input type="checkbox" name="isCompleted" class="todo-task-input" />
+            <div class="content">
+              <h3>Todo heading</h3>
+              <p>Summary of the today</p>
+              <p>
+                <span
+                  ><ion-icon name="calendar-outline"></ion-icon>
+                  <span>due date</span></span
+                >
+                <span
+                  ><ion-icon name="calendar-outline"></ion-icon
+                  ><span>created date</span></span
+                >
+              </p>
+            </div>
+
+            <div class="todo-task-operation">
+              <span class="todo-task-update">🖋</span>
+              <span class="todo-task-delete">✖</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="../script.js"></script>
+  </body>
+</html>

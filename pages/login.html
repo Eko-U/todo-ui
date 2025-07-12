@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body class="login-container">
+    <script>
+      const token = localStorage.getItem("jwt");
+      if (token) {
+        window.location.href = "todos.html";
+      }
+    </script>
+    <nav class="nav">
+      <a href="/"> <img src="" alt="logo" class="logo" /></a>
+      <ul class="nav__list--items">
+        <li><a href="">Features</a></li>
+        <li><a href="">Learn</a></li>
+        <li class="nav-login"><a href="../pages/login.html">Log in</a></li>
+        <li class="nav-signup"><a href="../pages/signup.html">sign up</a></li>
+        <li class="nav-logout hidden"><a href="">log out</a></li>
+      </ul>
+    </nav>
+    <main class="main-login">
+      <form action="" class="form form-login">
+        <div class="form-heading">
+          <h2>Login your account</h2>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Consequatur, voluptatum?
+          </p>
+        </div>
+        <div class="form-group">
+          <div class="">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" class="form__input" />
+          </div>
+
+          <div>
+            <label for="password-login">Password</label>
+            <div class="form-password">
+              <input
+                type="password"
+                name="password-login"
+                id="password-login"
+                class="password-login form__input"
+              />
+              <ion-icon name="eye-outline" class="icon-eye-login"></ion-icon>
+              <ion-icon
+                name="eye-off-outline"
+                class="icon-eye-off-login hidden"
+              ></ion-icon>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-login">Login</button>
+      </form>
+    </main>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="../script.js"></script>
+  </body>
+</html>
