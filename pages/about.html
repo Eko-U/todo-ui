@@ -1,11 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body class="body-about">
+    <nav class="nav">
+      <a href="/"> <img src="" alt="logo" class="logo" /></a>
+      <ul class="nav__list--items">
+        <li class="nav-login"><a href="../pages/login.html">Log in</a></li>
+        <li class="nav-signup"><a href="../pages/signup.html">sign up</a></li>
+        <li class="nav-logout hidden"><a href="">log out</a></li>
+      </ul>
+    </nav>
+
+    <main class="about-main">
+      <div class="about-main-container">
+        <div class="update-username">
+          <h3>Update your name</h3>
+          <form>
+            <div class="update-name">
+              <label for="username">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="form__input form__input--email"
+                disabled
+              />
+            </div>
+
+            <div class="update-name">
+              <label for="username">Fullname</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                class="form__input form__input--username"
+                value=""
+              />
+            </div>
+            <div class="avatar">
+              <ion-icon
+                name="person-circle-outline"
+                class="person-circle-outline person-circle-outline-about"
+              ></ion-icon>
+              <img src="" alt="picture of " class="avatar-about-img" />
+              <input type="file" name="avatar" id="avatar" accept="image/*" />
+            </div>
+
+            <button class="btn btn-update-user">Update</button>
+          </form>
+        </div>
+        <div class="update-password">
+          <h3>Update your password</h3>
+          <form>
+            <div>
+              <label for="password">Password</label>
+              <div class="form-password">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="password-signup-confirm form__input"
+                />
+                <ion-icon
+                  name="eye-outline"
+                  class="icon-eye icon-eye-confirm"
+                ></ion-icon>
+                <ion-icon
+                  name="eye-off-outline"
+                  class="icon-eye-off icon-eye-off-confirm hidden"
+                ></ion-icon>
+              </div>
+            </div>
+
+            <div>
+              <label for="password">Retype Password</label>
+              <div class="form-password">
+                <input
+                  type="password"
+                  name="confirm-password"
+                  id="confirm-password"
+                  class="password-signup-confirm form__input"
+                />
+                <ion-icon
+                  name="eye-outline"
+                  class="icon-eye icon-eye-confirm"
+                ></ion-icon>
+                <ion-icon
+                  name="eye-off-outline"
+                  class="icon-eye-off icon-eye-off-confirm hidden"
+                ></ion-icon>
+              </div>
+            </div>
+
+            <button class="btn btn-signup">Update Password</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script src="../script.js"></script>
+    <script src="./about.js"></script>
+  </body>
 </html>

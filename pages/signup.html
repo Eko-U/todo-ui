@@ -7,26 +7,17 @@
 
     <link rel="stylesheet" href="../style.css" />
   </head>
-  <body class="signup-container">
-    <script>
-      const token = localStorage.getItem("jwt");
-      if (token) {
-        window.location.href = "todos.html";
-      }
-    </script>
-
+  <body class="body-signup">
     <nav class="nav">
       <a href="/"> <img src="" alt="logo" class="logo" /></a>
       <ul class="nav__list--items">
-        <li><a href="">Features</a></li>
-        <li><a href="">Learn</a></li>
         <li class="nav-login"><a href="../pages/login.html">Log in</a></li>
         <li class="nav-signup"><a href="../pages/signup.html">sign up</a></li>
         <li class="nav-logout hidden"><a href="">log out</a></li>
       </ul>
     </nav>
 
-    <main class="main-signup">
+    <main>
       <form action="" class="form form-signup">
         <div class="form-heading">
           <h2>Create your account</h2>

@@ -3,27 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Todoling | Log in</title>
     <link rel="stylesheet" href="../style.css" />
   </head>
-  <body class="login-container">
-    <script>
-      const token = localStorage.getItem("jwt");
-      if (token) {
-        window.location.href = "todos.html";
-      }
-    </script>
+  <body class="body-login">
     <nav class="nav">
       <a href="/"> <img src="" alt="logo" class="logo" /></a>
       <ul class="nav__list--items">
-        <li><a href="">Features</a></li>
-        <li><a href="">Learn</a></li>
         <li class="nav-login"><a href="../pages/login.html">Log in</a></li>
         <li class="nav-signup"><a href="../pages/signup.html">sign up</a></li>
         <li class="nav-logout hidden"><a href="">log out</a></li>
       </ul>
     </nav>
-    <main class="main-login">
+    <main>
+      <p class="error hidden"></p>
       <form action="" class="form form-login">
         <div class="form-heading">
           <h2>Login your account</h2>
@@ -69,5 +62,6 @@
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
     <script src="../script.js"></script>
+    <script src="./login.js"></script>
   </body>
 </html>

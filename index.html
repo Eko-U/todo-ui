@@ -13,39 +13,41 @@
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
-  <body>
-    <div class="home">
-      <nav class="nav">
-        <a href="/"> <img src="" alt="logo" class="logo" /></a>
-        <ul class="nav__list--items">
-          <li><a href="">Features</a></li>
-          <li><a href="./pages/todos.html">Tasks</a></li>
-          <li class="nav-login"><a href="../pages/login.html">Log in</a></li>
-          <li class="nav-signup"><a href="../pages/signup.html">sign up</a></li>
-          <li class="nav-logout hidden"><a href="">log out</a></li>
-        </ul>
-        <a href="./pages/about.html" class="nav-user">
-          <span class="nav-username">Eko Gift</span>
-          <ion-icon
-            name="person-circle-outline"
-            class="person-circle-outline"
-          ></ion-icon>
-        </a>
-      </nav>
+  <body class="body-index">
+    <nav class="nav">
+      <a href="/"> <img src="" alt="logo" class="logo" /></a>
+      <ul class="nav__list--items">
+        <li class="hidden nav-todo">
+          <a href="./pages/todos.html">Tasks</a>
+        </li>
+        <li class="nav-login"><a href="../pages/login.html">Log in</a></li>
+        <li class="nav-signup"><a href="../pages/signup.html">sign up</a></li>
+        <li class="nav-logout hidden"><a href="">log out</a></li>
+      </ul>
 
-      <header class="header">
-        <div class="left">
-          <hgroup class="heading" id="heading" draggable="true">
-            <h1 class="heading-heading">Create tasks</h1>
-            <p class="heading-subheading">for the day</p>
-          </hgroup>
+      <span class="nav-user hidden">
+        <span class="nav-username"></span>
+        <ion-icon
+          name="person-circle-outline"
+          class="person-circle-outline"
+        ></ion-icon>
 
-          <button class="btn">start todoling</button>
-        </div>
+        <img src="" alt="picture of " class="avatar-img hidden" />
+      </span>
+    </nav>
 
-        <div class="right"></div>
-      </header>
-    </div>
+    <header class="header">
+      <div>
+        <hgroup class="heading" id="heading" draggable="true">
+          <h1 class="heading-heading">Create tasks</h1>
+          <p class="heading-subheading">for the day</p>
+        </hgroup>
+
+        <a href="./pages/todos.html">
+          <button class="btn btn-start-todoling">start todoling</button></a
+        >
+      </div>
+    </header>
 
     <script
       type="module"

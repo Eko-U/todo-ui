@@ -18,27 +18,24 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+
+  @media screen and (max-width: 62.5em) {
+    font-size: 50%;
+  }
 }
 
 body {
   font-family: var(--font-primary);
-
-  /* height: 100vh; */
-  /* display: grid; */
-  /* grid-template-columns: 50rem 50rem; */
-  /* place-content: center;
-  place-items: start; */
-  /* gap: 2rem; */
-
   font-size: 1.4rem;
-  /* margin-bottom: 500px; */
 }
 
 ion-icon {
   font-size: 2rem;
   cursor: pointer;
+}
 
-  /* --ionicon-stroke-width: 3rem; */
+ion-icon.logout-icon {
+  font-size: 2.7rem;
 }
 
 a:link,
@@ -47,16 +44,27 @@ a:visited {
   color: var(--color-primary);
 }
 
-a:hover,
-a:active {
-}
+/*********************************/
+/* INDEX PAGE */
+/*********************************/
 
-.home {
+.body-index {
+  background-color: var(--color-secondary);
   display: flex;
   flex-direction: column;
-  background-color: var(--color-secondary);
-  height: 80dvh;
 }
+
+.header {
+  padding: 4rem;
+  padding-top: 10rem;
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/*********************************/
+/* NAVIGATION COMPONENT */
+/*********************************/
 
 .nav {
   display: flex;
@@ -111,22 +119,6 @@ a:active {
   }
 }
 
-.left {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-
-  /* flex-basis: 55%;
-  height: 100%;
-  background-color: var(--color-tertiary); */
-}
-
-.right {
-  /* flex-basis: 40%;
-  height: 100%;
-  background-color: var(--color-tertiary); */
-}
-
 .btn-add-todo {
   display: flex;
   align-items: center;
@@ -142,9 +134,9 @@ a:active {
   }
 }
 
-.left .btn {
-  align-self: start;
-}
+/*********************************/
+/* HEADING COMPONENT  */
+/*********************************/
 
 .heading {
   line-height: 1.1;
@@ -159,12 +151,9 @@ a:active {
   font-size: 5rem;
 }
 
-.header {
-  padding: 4rem;
-  flex-basis: 100%;
-  display: flex;
-  align-items: center;
-}
+/*********************************/
+/* FORM COMPONENT */
+/*********************************/
 
 .form__input,
 .form-textarea-add {
@@ -183,6 +172,8 @@ a:active {
 .form-add-task {
   width: 50rem;
   align-self: start;
+  justify-self: center;
+  box-shadow: 0 1px 2px rgba(198, 198, 198, 0.42);
 }
 
 .form-heading {
@@ -223,12 +214,113 @@ a:active {
   font-size: inherit;
 }
 
+/*********************************/
+/* TODO PAGE */
+/*********************************/
+
+.body-todos {
+  background-color: var(--color-secondary);
+  height: 100vh;
+
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.body-todos nav {
+  height: auto;
+}
+
+.main-todos {
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5rem;
+
+  background-color: rgb(217, 217, 217);
+}
+
+@media only screen and (max-width: 62.5em) {
+  .main-todos {
+    display: block;
+  }
+}
+
+.todo-task-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  & div:first-child {
+    flex-basis: 70%;
+  }
+}
+
+.todo-task {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.todo-task-lists {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: scroll;
+}
+
+.due-date {
+  color: red;
+}
+
+.due-date-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 8px;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 1.2rem;
+
+    & ion-icon {
+      font-weight: 800;
+    }
+  }
+}
+
+.error {
+  background-color: rgb(244, 231, 231);
+  color: rgb(64, 4, 4);
+  text-align: center;
+  font-size: 1rem;
+  padding: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+li.done {
+  border-color: green;
+}
+
+.due-date-container .done {
+  color: green;
+  font-weight: bolder;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
 .no-todo-tasks {
   background-color: var(--color-secondary);
-  padding: 5px;
+  padding: 0.4rem;
+  line-height: 1.15;
   text-align: center;
-  border-radius: 50rem;
-  font-size: 1.2rem;
+  border-radius: 5px;
+  font-size: 1.1rem;
   width: auto;
   font-weight: bolder;
 
@@ -236,23 +328,7 @@ a:active {
   justify-self: center;
 }
 
-.todo-task-heading {
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-}
-
-.todo-task {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  height: 50rem;
-}
-
-.todo-task-lists {
-  height: 50rem;
+.todo-task-lists-completed {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -310,10 +386,38 @@ a:active {
   }
 }
 
-.btn-login {
-  align-self: start;
-  padding-left: 4rem;
-  padding-right: 4rem;
+/*********************************/
+/* LOGIN PAGE */
+/*********************************/
+
+.body-login,
+.body-signup,
+.body-about {
+  height: 100vh;
+  background-color: var(--color-secondary);
+}
+
+.body-login main,
+.body-signup main,
+.body-about main {
+  display: flex;
+  justify-content: center;
+  padding: 10rem;
+}
+
+@media only screen and (max-width: 39.8125em) {
+  .body-login main,
+  .body-signup main {
+    padding: 4rem;
+  }
+}
+
+@media only screen and (max-width: 25em) {
+  .body-login main,
+  .body-signup main {
+    padding: 2rem;
+    margin-top: 5rem;
+  }
 }
 
 .form-password {
@@ -332,50 +436,96 @@ a:active {
   display: none;
 }
 
-/** SIGNUP **/
-
-.signup-container {
-  display: grid;
-}
-
-.main-signup,
-.main-login {
-  background-color: rgb(230, 230, 230);
-  height: 100vh;
-  padding: 10rem;
-}
-
 .form-signup,
 .form-login {
   place-self: center;
   width: 50rem;
 }
 
-.main-todos {
-  padding: 5rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 5rem;
+/*********************************/
+/* ABOUT PAGE */
+/*********************************/
+
+.avatar-about-img {
+  display: none;
+  height: 4.5rem;
+  width: 4.5rem;
+
+  border-radius: 500rem;
 }
 
-.due-date {
-  color: red;
-}
-
-.due-date-container {
+.about-main-container {
+  justify-self: start;
   display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-top: 8px;
+  flex-direction: column;
+  gap: 5rem;
 
-  span {
+  min-width: 70rem;
+  background-color: #fff;
+  padding: 2rem;
+}
+
+.update-username {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  & form {
     display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 1.2rem;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
 
-    & ion-icon {
-      font-weight: 800;
-    }
+.update-password {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+.update-name {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.avatar {
+  display: flex;
+  gap: 4rem;
+  font-family: inherit;
+  align-items: center;
+}
+
+.avatar-img {
+  height: 3rem;
+  width: 3rem;
+
+  border-radius: 500rem;
+
+  display: none;
+}
+
+.person-circle-outline-about {
+  font-size: 3rem;
+}
+
+@media only screen and (max-width: 34.0625em) {
+  .header {
+    padding: 2rem;
+    /* display: block; */
+  }
+
+  .heading-heading {
+    font-size: 3rem;
+  }
+
+  .heading-subheading {
+    font-size: 3rem;
   }
 }

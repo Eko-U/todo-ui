@@ -42,18 +42,21 @@ if (el2_confirm) {
 
 async function signup(name, email, password, passwordConfirm) {
   console.log(email, password);
-  const res = await fetch("http://127.0.0.1:3033/api/v1/users/signup", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      email,
-      password,
-      passwordConfirm,
-    }),
-  });
+  const res = await fetch(
+    "https://todoling-api.onrender.com/api/v1/users/signup",
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+        passwordConfirm,
+      }),
+    }
+  );
 
   const data = await res.json();
 
