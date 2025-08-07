@@ -19,32 +19,34 @@ const formTodoAddTask = document.querySelector(".form-add-task");
 const todoTaskUpdate = document.querySelector(".todo-task-update");
 const todoTaskInput = document.querySelector(".todo-task-input");
 
-const isLoggedIn = localStorage.getItem("login");
-if (Boolean(isLoggedIn))
-  (async function () {
-    try {
-      const data = await getCurrentUser();
+const overlay = document.querySelector(".overlay");
 
-      username.textContent = data?.name;
-      navLogin.classList.add("hidden");
-      navSignup.classList.add("hidden");
-      navLogout.classList.remove("hidden");
-      navUserBox.classList.remove("hidden");
+(async function () {
+  try {
+    overlay.style.display = "flex";
+    const data = await getCurrentUser();
 
-      if (data.avatar.length === 0) {
-        avatar.style.display = "none";
-        dummyImg.style.display = "block";
-      }
+    username.textContent = data?.name;
+    navLogin.classList.add("hidden");
+    navSignup.classList.add("hidden");
+    navLogout.classList.remove("hidden");
+    navUserBox.classList.remove("hidden");
 
-      if (data.avatar.length > 0) {
-        avatar.src = `${AVATAR_URL}\\${data.avatar}`;
-        avatar.style.display = "block";
-        dummyImg.style.display = "none";
-      }
-    } catch (error) {
-      return error;
+    if (data.avatar.length === 0) {
+      avatar.style.display = "none";
+      dummyImg.style.display = "block";
     }
-  })();
+
+    if (data.avatar.length > 0) {
+      avatar.src = `${AVATAR_URL}\\${data.avatar}`;
+      avatar.style.display = "block";
+      dummyImg.style.display = "none";
+    }
+    overlay.style.display = "none";
+  } catch (error) {
+    return error;
+  }
+})();
 
 if (btnShowTodoForm)
   btnShowTodoForm.addEventListener("click", function (e) {

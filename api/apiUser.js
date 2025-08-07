@@ -18,7 +18,7 @@ export async function login(email, password) {
 
     return data;
   } catch (error) {
-    return error;
+    return { error: error.message };
   }
 }
 

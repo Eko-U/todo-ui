@@ -1,10 +1,23 @@
-import { login } from "../api/apiUser.js";
+import { getCurrentUser, login } from "../api/apiUser.js";
 
 const loginBtn = document.querySelector(".btn-login");
 const el_login = document.querySelector(".icon-eye-login");
 const el2_login = document.querySelector(".icon-eye-off-login");
 const password_login_el = document.querySelector(".password-login");
 const errEl = document.querySelector(".error");
+
+const overlay = document.querySelector(".overlay");
+
+(async function isLoggedIn() {
+  overlay.style.display = "flex";
+  try {
+    const data = await getCurrentUser();
+    if (!data.active) return;
+    window.location.href = "/pages/todos.html";
+    overlay.style.display = "none";
+  } finally {
+  }
+})();
 
 el_login.addEventListener("click", function (e) {
   el_login.classList.add("hidden");
@@ -40,9 +53,7 @@ if (loginBtn) {
 
     const data = await login(email, password);
 
-    console.log(data);
-
-    if (data.status === "error" || data.status === "fail") {
+    if (data.status === "error" || data.status === "fail" || data.error) {
       errEl.classList.toggle("hidden");
       errEl.textContent = `${data.message}`;
 

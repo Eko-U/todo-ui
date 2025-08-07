@@ -15,13 +15,14 @@ const userEl = document.querySelector(".nav-username");
 const navUserBox = document.querySelector(".nav-user");
 const dummyImg = document.querySelector(".person-circle-outline");
 
+const overlay = document.querySelector(".overlay");
+
 const isLoggedIn = localStorage.getItem("login");
 if (Boolean(isLoggedIn))
   (async function () {
+    if (overlay) overlay.style.display = "flex";
     try {
       const data = await getCurrentUser();
-
-      console.log(data);
 
       username.textContent = data?.name;
       navLogin.classList.add("hidden");
@@ -41,6 +42,8 @@ if (Boolean(isLoggedIn))
       }
     } catch (error) {
       return error;
+    } finally {
+      if (overlay) overlay.style.display = "none";
     }
   })();
 
