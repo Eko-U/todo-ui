@@ -38,6 +38,16 @@ ion-icon.logout-icon {
   font-size: 2.7rem;
 }
 
+label,
+input {
+  display: block;
+}
+
+h3 {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
 a:link,
 a:visited {
   text-decoration: none;
@@ -45,21 +55,104 @@ a:visited {
 }
 
 /*********************************/
+/* BUTTON COMPONENT */
+/*********************************/
+
+.btn {
+  background-color: transparent;
+  cursor: pointer;
+  padding: 1rem;
+  font-size: inherit;
+}
+
+@media only screen and (max-width: 34.0625em) {
+  .btn {
+    font-size: 1.7rem;
+  }
+}
+
+/*********************************/
+/* HEADING COMPONENT  */
+/*********************************/
+
+.heading {
+  line-height: 1.1;
+}
+
+.heading-heading {
+  font-size: 6rem;
+  text-transform: uppercase;
+}
+
+.heading-subheading {
+  font-size: 5rem;
+}
+
+/*********************************/
+/* BODY  PAGE */
+/*********************************/
+
+.body-index,
+.body-login,
+.body-signup,
+.body-about {
+  height: 100vh;
+  background-color: var(--color-secondary);
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.body-login main,
+.body-signup main {
+  display: flex;
+  justify-content: center;
+
+  padding: 10rem;
+}
+
+@media only screen and (max-width: 39.8125em) {
+  .body-login main,
+  .body-signup main {
+    padding: 6rem;
+  }
+}
+
+@media only screen and (max-width: 25em) {
+  .body-login main,
+  .body-signup main {
+    padding: 2rem;
+  }
+}
+
+/*********************************/
 /* INDEX PAGE */
 /*********************************/
 
-.body-index {
-  background-color: var(--color-secondary);
-  display: flex;
-  flex-direction: column;
-}
-
 .header {
   padding: 4rem;
-  padding-top: 10rem;
-  flex-basis: 100%;
+
   display: flex;
   align-items: center;
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media only screen and (max-width: 25.9em) {
+  .header {
+    padding: 2rem 1rem;
+  }
+
+  .heading-heading {
+    font-size: 4rem;
+  }
+
+  .heading-subheading {
+    font-size: 3rem;
+  }
 }
 
 /*********************************/
@@ -67,9 +160,9 @@ a:visited {
 /*********************************/
 
 .nav {
+  height: auto;
   display: flex;
   padding: 0.5rem;
-  flex-basis: auto;
   gap: 2rem;
   align-items: center;
 
@@ -87,7 +180,7 @@ a:visited {
   margin-left: auto;
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 1rem;
   font-size: 1.6rem;
 
   & li {
@@ -103,14 +196,13 @@ a:visited {
   }
 }
 
-.nav-signup a {
-  color: #fff;
-}
-
 .nav-signup {
-  margin-left: 1.5rem;
   background-color: var(--color-tertiary);
-  border-radius: 10px;
+  border-radius: 2px;
+
+  & a {
+    color: #fff;
+  }
 
   &:hover {
     background-color: transparent;
@@ -132,23 +224,6 @@ a:visited {
     color: inherit !important;
     font-weight: 600;
   }
-}
-
-/*********************************/
-/* HEADING COMPONENT  */
-/*********************************/
-
-.heading {
-  line-height: 1.1;
-}
-
-.heading-heading {
-  font-size: 6rem;
-  text-transform: uppercase;
-}
-
-.heading-subheading {
-  font-size: 5rem;
 }
 
 /*********************************/
@@ -198,20 +273,13 @@ a:visited {
   font-size: inherit;
   padding: 1rem;
   width: 100%;
+  display: block;
 }
 
 .form-textarea-add {
   font-size: inherit;
-  width: 100%;
   resize: none;
   height: 7rem;
-}
-
-.btn {
-  background-color: transparent;
-  cursor: pointer;
-  padding: 1rem;
-  font-size: inherit;
 }
 
 /*********************************/
@@ -390,36 +458,6 @@ input[type="checkbox"] {
 /* LOGIN PAGE */
 /*********************************/
 
-.body-login,
-.body-signup,
-.body-about {
-  height: 100vh;
-  background-color: var(--color-secondary);
-}
-
-.body-login main,
-.body-signup main,
-.body-about main {
-  display: flex;
-  justify-content: center;
-  padding: 10rem;
-}
-
-@media only screen and (max-width: 39.8125em) {
-  .body-login main,
-  .body-signup main {
-    padding: 4rem;
-  }
-}
-
-@media only screen and (max-width: 25em) {
-  .body-login main,
-  .body-signup main {
-    padding: 2rem;
-    margin-top: 5rem;
-  }
-}
-
 .form-password {
   display: flex;
   align-items: center;
@@ -439,7 +477,7 @@ input[type="checkbox"] {
 .form-signup,
 .form-login {
   place-self: center;
-  width: 50rem;
+  padding: 3rem;
 }
 
 /*********************************/
@@ -454,15 +492,37 @@ input[type="checkbox"] {
   border-radius: 500rem;
 }
 
+.body-about main {
+  padding: 5rem;
+}
+
+@media only screen and (max-width: 26em) {
+  .body-about main {
+    gap: 3rem;
+    padding: 1rem;
+  }
+}
+
 .about-main-container {
-  justify-self: start;
   display: flex;
   flex-direction: column;
   gap: 5rem;
-
-  min-width: 70rem;
-  background-color: #fff;
   padding: 2rem;
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 26em) {
+  .about-main-container {
+    gap: 3rem;
+    padding: 1rem;
+  }
+}
+
+.about-avatar {
+  display: flex;
+  gap: 4rem;
+  font-family: inherit;
+  align-items: center;
 }
 
 .update-username {
@@ -495,13 +555,6 @@ input[type="checkbox"] {
   gap: 0.5rem;
 }
 
-.avatar {
-  display: flex;
-  gap: 4rem;
-  font-family: inherit;
-  align-items: center;
-}
-
 .avatar-img {
   height: 3rem;
   width: 3rem;
@@ -513,19 +566,4 @@ input[type="checkbox"] {
 
 .person-circle-outline-about {
   font-size: 3rem;
-}
-
-@media only screen and (max-width: 34.0625em) {
-  .header {
-    padding: 2rem;
-    /* display: block; */
-  }
-
-  .heading-heading {
-    font-size: 3rem;
-  }
-
-  .heading-subheading {
-    font-size: 3rem;
-  }
 }
