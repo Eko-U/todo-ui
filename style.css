@@ -106,6 +106,7 @@ a:visited {
 .body-signup main {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 
   padding: 10rem;
 }
@@ -143,7 +144,23 @@ a:visited {
 
 @media only screen and (max-width: 25.9em) {
   .header {
-    padding: 2rem 1rem;
+    padding: 9rem 4rem;
+    align-items: start;
+  }
+
+  .heading-heading {
+    font-size: 5rem;
+  }
+
+  .heading-subheading {
+    font-size: 3.5rem;
+  }
+}
+
+@media only screen and (max-width: 23.25em) {
+  .header {
+    padding: 9rem 2rem;
+    align-items: start;
   }
 
   .heading-heading {
@@ -249,6 +266,10 @@ a:visited {
   align-self: start;
   justify-self: center;
   box-shadow: 0 1px 2px rgba(198, 198, 198, 0.42);
+
+  @media only screen and (max-width: 28.25em) {
+    width: auto;
+  }
 }
 
 .form-heading {
@@ -274,6 +295,10 @@ a:visited {
   padding: 1rem;
   width: 100%;
   display: block;
+
+  @media only screen and (max-width: 28.25em) {
+    width: auto;
+  }
 }
 
 .form-textarea-add {
@@ -298,18 +323,36 @@ a:visited {
   height: auto;
 }
 
-.main-todos {
+.main-todos-container {
   padding: 4rem;
+  background-color: #fff;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5rem;
 
-  background-color: rgb(217, 217, 217);
+  @media only screen and (max-width: 68.125em) {
+    gap: 3rem;
+    padding: 2rem;
+  }
+
+  @media only screen and (max-width: 62.5em) {
+    display: block;
+    padding: 5rem;
+  }
+
+  @media only screen and (max-width: 34.75em) {
+    padding: 2rem;
+  }
 }
 
-@media only screen and (max-width: 62.5em) {
-  .main-todos {
-    display: block;
+.main-todos {
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+
+  @media only screen and (max-width: 34.75em) {
+    padding: 2rem;
   }
 }
 
@@ -321,6 +364,11 @@ a:visited {
 
   & div:first-child {
     flex-basis: 70%;
+  }
+
+  @media only screen and (max-width: 26.875em) {
+    flex-direction: column;
+    align-items: start;
   }
 }
 
@@ -357,13 +405,19 @@ a:visited {
       font-weight: 800;
     }
   }
+
+  @media only screen and (max-width: 22.875em) {
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+  }
 }
 
 .error {
   background-color: rgb(244, 231, 231);
   color: rgb(64, 4, 4);
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.4rem;
   padding: 1rem;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -413,6 +467,10 @@ input[type="checkbox"] {
   border: 3px solid rgb(207, 207, 207);
   border-radius: 0.5rem;
   cursor: pointer;
+
+  @media only screen and (max-width: 22.875em) {
+    gap: 0.8rem;
+  }
 }
 
 .todo-task-input {
@@ -491,7 +549,7 @@ input[type="checkbox"] {
 
   border-radius: 500rem;
 }
-
+/* 65.3125 */
 .body-about main {
   padding: 5rem;
 }

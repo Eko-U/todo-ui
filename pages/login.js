@@ -22,23 +22,6 @@ if (el2_login) {
   });
 }
 
-async function test(email, password) {
-  errEl.classList.add("hidden");
-
-  const data = await login(email, password);
-  localStorage.setItem("login", true);
-  localStorage.setItem("jwt", data.token);
-
-  if (data.status === "error") {
-    errEl.classList.toggle("hidden");
-    errEl.textContent = `${data.message}`;
-
-    return null;
-  }
-
-  window.location.href = "/";
-}
-
 if (loginBtn) {
   loginBtn.addEventListener("click", async function (e) {
     e.preventDefault();
@@ -53,6 +36,22 @@ if (loginBtn) {
       return null;
     }
 
-    await test(email, password);
+    errEl.classList.add("hidden");
+
+    const data = await login(email, password);
+
+    console.log(data);
+
+    if (data.status === "error" || data.status === "fail") {
+      errEl.classList.toggle("hidden");
+      errEl.textContent = `${data.message}`;
+
+      return null;
+    }
+
+    localStorage.setItem("login", true);
+    localStorage.setItem("jwt", data.token);
+
+    window.location.href = "/pages/todos.html";
   });
 }

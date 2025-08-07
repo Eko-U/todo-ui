@@ -1,16 +1,5 @@
-import { getCurrentUser } from "./api/apiUser.js";
+import { getCurrentUser, logout } from "./api/apiUser.js";
 import { AVATAR_URL } from "./api/constants.js";
-
-function dateFormated(dateToFormat) {
-  const date = new Date(dateToFormat);
-  const finalDate = `${
-    date.getDate() < 10 ? "0" + date.getDate() : date.getDate()
-  }/${
-    date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1
-  }/${date.getFullYear()} `;
-
-  return finalDate;
-}
 
 const username = document.querySelector(".nav-username");
 const navLogin = document.querySelector(".nav-login");
@@ -27,7 +16,6 @@ const navUserBox = document.querySelector(".nav-user");
 const dummyImg = document.querySelector(".person-circle-outline");
 
 const isLoggedIn = localStorage.getItem("login");
-console.log(Boolean(isLoggedIn));
 if (Boolean(isLoggedIn))
   (async function () {
     try {
@@ -40,12 +28,19 @@ if (Boolean(isLoggedIn))
       navSignup.classList.add("hidden");
       navLogout.classList.remove("hidden");
       navUserBox.classList.remove("hidden");
-      dummyImg.style.display = "none";
-      avatar.style.display = "block";
 
-      avatar.src = `${AVATAR_URL}\\${data.avatar}`;
+      if (data.avatar.length === 0) {
+        avatar.style.display = "none";
+        dummyImg.style.display = "block";
+      }
+
+      if (data.avatar.length > 0) {
+        avatar.src = `${AVATAR_URL}\\${data.avatar}`;
+        avatar.style.display = "block";
+        dummyImg.style.display = "none";
+      }
     } catch (error) {
-      return;
+      return error;
     }
   })();
 
@@ -53,5 +48,7 @@ if (btnLogout)
   btnLogout.addEventListener("click", async function (e) {
     e.preventDefault();
 
-    await logout();
+    const isLogout = await logout();
+    if (isLogout) localStorage.clear();
+    window.location.href = "/";
   });

@@ -1,4 +1,6 @@
 import { updateTodoTask, deleteTodoTask } from "../api/apiTask.js";
+import API_URL from "../api/constants.js";
+import { dateFormated } from "../api/helper.js";
 
 const todoTaskListCompletedContainer = document.querySelector(
   ".todo-task-lists-completed"
@@ -17,18 +19,32 @@ const formTodoAddTask = document.querySelector(".form-add-task");
 const todoTaskUpdate = document.querySelector(".todo-task-update");
 const todoTaskInput = document.querySelector(".todo-task-input");
 
-(async function () {
-  try {
-    const res = await fetch("http://127.0.0.1:3033/api/v1/users/me", {
-      method: "GET",
-      credentials: "include",
-    });
+const isLoggedIn = localStorage.getItem("login");
+if (Boolean(isLoggedIn))
+  (async function () {
+    try {
+      const data = await getCurrentUser();
 
-    if (!res.ok) throw new Error("Log in");
-  } catch (error) {
-    window.location.href = "/pages/login.html";
-  }
-})();
+      username.textContent = data?.name;
+      navLogin.classList.add("hidden");
+      navSignup.classList.add("hidden");
+      navLogout.classList.remove("hidden");
+      navUserBox.classList.remove("hidden");
+
+      if (data.avatar.length === 0) {
+        avatar.style.display = "none";
+        dummyImg.style.display = "block";
+      }
+
+      if (data.avatar.length > 0) {
+        avatar.src = `${AVATAR_URL}\\${data.avatar}`;
+        avatar.style.display = "block";
+        dummyImg.style.display = "none";
+      }
+    } catch (error) {
+      return error;
+    }
+  })();
 
 if (btnShowTodoForm)
   btnShowTodoForm.addEventListener("click", function (e) {
@@ -76,7 +92,7 @@ if (btnAddTodoTask)
     if (dueDate.value >= dueDate.min) console.log("You can use this date");
     if (dueDate.value < dueDate.min) console.log("You cannot use this date");
 
-    const res = await fetch("http://127.0.0.1:3033/api/v1/tasks", {
+    const res = await fetch(`${API_URL}/tasks`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -145,7 +161,7 @@ if (todoTaskListsContainer || todoTaskListCompletedContainer) {
   const noTodoTaskEl = document.querySelector(".no-todo-tasks");
   const todoTaskListsContainer = document.querySelector(".todo-task-lists");
 
-  const res = await fetch("http://127.0.0.1:3033/api/v1/tasks/", {
+  const res = await fetch(`${API_URL}/tasks/`, {
     method: "GET",
     headers: {
       "Content-type": "application/json",

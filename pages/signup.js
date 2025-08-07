@@ -1,8 +1,9 @@
-import { signup } from "../api/apiUser";
+import { signup } from "../api/apiUser.js";
 
 const el_signup = document.querySelector(".icon-eye-signup");
 const el2_signup = document.querySelector(".icon-eye-off-signup");
 const password_signup_el = document.querySelector(".password-signup-first");
+const errEl = document.querySelector(".error");
 
 const btn_signup = document.querySelector(".btn-signup");
 
@@ -45,10 +46,27 @@ if (el2_confirm) {
 btn_signup.addEventListener("click", async function (e) {
   e.preventDefault();
 
-  const name = document.querySelector(".form__input--username");
-  const email = document.querySelector(".form__input--email");
-  const password = document.querySelector(".password-signup-first");
-  const passwordConfirm = document.querySelector(".password-signup-confirm");
+  const name = document.querySelector(".form__input--username").value;
+  const email = document.querySelector(".form__input--email").value;
+  const password = document.querySelector(".password-signup-first").value;
+  const passwordConfirm = document.querySelector(
+    ".password-signup-confirm"
+  ).value;
 
-  await signup(name.value, email.value, password.value, passwordConfirm.value);
+  if (!email || !password || !name || !passwordConfirm) {
+    errEl.classList.remove("hidden");
+    errEl.textContent = `Please fullname, email, password, retype password can't be empty. Please insert your fullname, email, password and retype password`;
+    return null;
+  }
+
+  const data = await signup(name, email, password, passwordConfirm);
+
+  if (data.status === "fail") {
+    errEl.classList.toggle("hidden");
+    errEl.textContent = `${data.message}`;
+
+    return null;
+  }
+
+  window.location.href = "/pages/login.html";
 });

@@ -1,16 +1,15 @@
+import API_URL from "./constants.js";
+
 export function updateTodoTask(taskId) {
   async function fn() {
-    const getResTask = await fetch(
-      `http://127.0.0.1:3033/api/v1/tasks/${taskId}`,
-      {
-        method: "GET",
-        credentials: "include",
-      }
-    );
+    const getResTask = await fetch(`${API_URL}/tasks/${taskId}`, {
+      method: "GET",
+      credentials: "include",
+    });
 
     const getResTaskData = await getResTask.json();
 
-    const res = await fetch(`http://127.0.0.1:3033/api/v1/tasks/${taskId}`, {
+    const res = await fetch(`${API_URL}/tasks/${taskId}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
@@ -29,7 +28,7 @@ export function updateTodoTask(taskId) {
 
 export function deleteTodoTask(taskId) {
   async function fn() {
-    const res = await fetch(`http://127.0.0.1:3033/api/v1/tasks/${taskId}`, {
+    const res = await fetch(`${API_URL}/tasks/${taskId}`, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",

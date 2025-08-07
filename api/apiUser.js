@@ -23,34 +23,43 @@ export async function login(email, password) {
 }
 
 export async function signup(name, email, password, passwordConfirm) {
-  const res = await fetch(`${API_URL}/users/signup`, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      email,
-      password,
-      passwordConfirm,
-    }),
-  });
+  try {
+    const res = await fetch(`${API_URL}/users/signup`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+        passwordConfirm,
+      }),
+    });
 
-  const data = await res.json();
+    const data = await res.json();
 
-  if (!res.ok) throw new Error(data.message);
-
-  return data;
+    return data;
+  } catch (error) {
+    return error;
+  }
 }
 
 export async function logout() {
-  const res = await fetch(`${API_URL}/users/logout`, {
-    method: "GET",
-    credentials: "include",
-  });
+  try {
+    const res = await fetch(`${API_URL}/users/logout`, {
+      method: "GET",
+      credentials: "include",
+    });
 
-  if (!res.ok) throw new Error("You can't logout at the moment");
-  await res.json();
+    if (!res.ok) throw new Error("You can't logout at the moment");
+
+    await res.json();
+
+    return res.ok;
+  } catch (error) {
+    return error;
+  }
 }
 
 export async function getCurrentUser() {

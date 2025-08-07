@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>todoling |</title>
+    <title>todoling | Todos</title>
     <link rel="stylesheet" href="../style.css" />
   </head>
   <body class="body-todos">
@@ -15,9 +15,7 @@
         </li>
         <li class="nav-login"><a href="../pages/login.html">Log in</a></li>
         <li class="nav-signup"><a href="../pages/signup.html">sign up</a></li>
-        <li class="hidden nav-logout">
-          <ion-icon name="log-out-outline" class="logout-icon"></ion-icon>
-        </li>
+        <li class="nav-logout hidden"><a href="">log out</a></li>
       </ul>
 
       <span class="nav-user hidden">
@@ -26,92 +24,96 @@
           name="person-circle-outline"
           class="person-circle-outline"
         ></ion-icon>
+
+        <img src="" alt="picture of " class="avatar-img hidden" />
       </span>
     </nav>
     <main class="main-todos">
-      <div class="todo-task">
-        <div class="todo-task-heading">
-          <div>
-            <h2>Todo Task</h2>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores
-              laudantiums.
-            </p>
+      <div class="main-todos-container">
+        <div class="todo-task">
+          <div class="todo-task-heading">
+            <div>
+              <h2>Todo Task</h2>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Maiores laudantiums.
+              </p>
+            </div>
+
+            <div>
+              <button class="btn btn-add-todo">
+                <ion-icon name="add-outline"></ion-icon> <span>New Task</span>
+              </button>
+            </div>
           </div>
 
-          <div>
-            <button class="btn btn-add-todo">
-              <ion-icon name="add-outline"></ion-icon> <span>New Task</span>
-            </button>
-          </div>
+          <p class="error hidden"></p>
+
+          <!-- form for add task -->
+          <form action="" class="form form-add-task hidden">
+            <div class="form-heading">
+              <h2>Add New List</h2>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Consequatur, voluptatum?
+              </p>
+            </div>
+
+            <div class="form-group">
+              <div class="form-row">
+                <label for="task-name">Task Name</label>
+                <input
+                  class="form__input form__input--task-name"
+                  id="task-name"
+                  type="text"
+                  placeholder="Enter your task name"
+                  name="title"
+                />
+              </div>
+
+              <div class="form-row">
+                <label for="task-due-date">Due Date</label>
+
+                <input
+                  type="datetime-local"
+                  id="task-due-date"
+                  name="meeting-time"
+                  class="form__input form__input--task-due-date"
+                />
+              </div>
+
+              <div class="form-row">
+                <label for="task-description">Description</label>
+                <textarea
+                  id="task-description"
+                  name="description"
+                  placeholder="Description of the task"
+                  class="form-textarea-add"
+                ></textarea>
+              </div>
+            </div>
+            <button class="btn btn-add">Add Task</button>
+          </form>
+          <!-- end of form for adding task -->
+
+          <ul class="todo-task-lists">
+            <p class="no-todo-tasks hidden"></p>
+          </ul>
         </div>
 
-        <p class="error hidden"></p>
-
-        <!-- form for add task -->
-        <form action="" class="form form-add-task hidden">
-          <div class="form-heading">
-            <h2>Add New List</h2>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Consequatur, voluptatum?
-            </p>
-          </div>
-
-          <div class="form-group">
-            <div class="form-row">
-              <label for="task-name">Task Name</label>
-              <input
-                class="form__input form__input--task-name"
-                id="task-name"
-                type="text"
-                placeholder="Enter your task name"
-                name="title"
-              />
-            </div>
-
-            <div class="form-row">
-              <label for="task-due-date">Due Date</label>
-
-              <input
-                type="datetime-local"
-                id="task-due-date"
-                name="meeting-time"
-                class="form__input form__input--task-due-date"
-              />
-            </div>
-
-            <div class="form-row">
-              <label for="task-description">Description</label>
-              <textarea
-                id="task-description"
-                name="description"
-                placeholder="Description of the task"
-                class="form-textarea-add"
-              ></textarea>
+        <div class="todo-task todo-task-completed">
+          <div class="todo-task-heading">
+            <div>
+              <h2>Todo Tasks Completed 🎉</h2>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Maiores laudantiums.
+              </p>
             </div>
           </div>
-          <button class="btn btn-add">Add Task</button>
-        </form>
-        <!-- end of form for adding task -->
 
-        <ul class="todo-task-lists">
-          <p class="no-todo-tasks hidden"></p>
-        </ul>
-      </div>
-
-      <div class="todo-task todo-task-completed">
-        <div class="todo-task-heading">
-          <div>
-            <h2>Todo Tasks Completed 🎉</h2>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores
-              laudantiums.
-            </p>
-          </div>
+          <ul class="todo-task-lists-completed"></ul>
         </div>
-
-        <ul class="todo-task-lists-completed"></ul>
       </div>
     </main>
 
@@ -123,7 +125,7 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <script src="../script.js"></script>
+    <script type="module" src="../script.js"></script>
     <script type="module" src="./todo.js"></script>
   </body>
 </html>
