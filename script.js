@@ -1,3 +1,6 @@
+import { getCurrentUser } from "./api/apiUser.js";
+import { AVATAR_URL } from "./api/constants.js";
+
 function dateFormated(dateToFormat) {
   const date = new Date(dateToFormat);
   const finalDate = `${
@@ -24,19 +27,13 @@ const navUserBox = document.querySelector(".nav-user");
 const dummyImg = document.querySelector(".person-circle-outline");
 
 const isLoggedIn = localStorage.getItem("login");
-
-if (isLoggedIn)
+console.log(Boolean(isLoggedIn));
+if (Boolean(isLoggedIn))
   (async function () {
-    console.log("tessting....");
     try {
-      const res = await fetch("http://127.0.0.1:3033/api/v1/users/me", {
-        method: "GET",
-        credentials: "include",
-      });
+      const data = await getCurrentUser();
 
-      if (!res.ok) return;
-
-      const { data } = await res.json();
+      console.log(data);
 
       username.textContent = data?.name;
       navLogin.classList.add("hidden");
@@ -45,47 +42,16 @@ if (isLoggedIn)
       navUserBox.classList.remove("hidden");
       dummyImg.style.display = "none";
       avatar.style.display = "block";
-      avatar.src = `http://127.0.0.1:3033\\img\\avatars\\${data.avatar}`;
+
+      avatar.src = `${AVATAR_URL}\\${data.avatar}`;
     } catch (error) {
       return;
     }
   })();
 
-async function userDetails(email, password) {
-  const res = await fetch("http://127.0.0.1:3033/api/v1/users/login", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    credentials: "include",
-    body: JSON.stringify({
-      email,
-      password,
-    }),
-  });
-
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.message);
-  window.location.reload();
-}
-
-async function logout() {
-  const res = await fetch("http://127.0.0.1:3033/api/v1/users/logout", {
-    method: "GET",
-    credentials: "include",
-  });
-
-  const data = await res.json();
-  localStorage.clear();
-  console.log(data);
-  window.location.reload();
-}
-
 if (btnLogout)
   btnLogout.addEventListener("click", async function (e) {
     e.preventDefault();
-
-    console.log("clicking");
 
     await logout();
   });

@@ -1,3 +1,5 @@
+import { signup } from "../api/apiUser";
+
 const el_signup = document.querySelector(".icon-eye-signup");
 const el2_signup = document.querySelector(".icon-eye-off-signup");
 const password_signup_el = document.querySelector(".password-signup-first");
@@ -38,34 +40,6 @@ if (el2_confirm) {
 
     password_confirm_el.type = "password";
   });
-}
-
-async function signup(name, email, password, passwordConfirm) {
-  console.log(email, password);
-  const res = await fetch(
-    "https://todoling-api.onrender.com/api/v1/users/signup",
-    {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-        passwordConfirm,
-      }),
-    }
-  );
-
-  const data = await res.json();
-
-  console.log(data);
-
-  if (!res.ok) throw new Error(data.message);
-
-  localStorage.setItem("jwt", data.token);
-  window.location.href = "/";
 }
 
 btn_signup.addEventListener("click", async function (e) {

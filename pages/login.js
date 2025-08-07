@@ -1,3 +1,5 @@
+import { login } from "../api/apiUser.js";
+
 const loginBtn = document.querySelector(".btn-login");
 const el_login = document.querySelector(".icon-eye-login");
 const el2_login = document.querySelector(".icon-eye-off-login");
@@ -20,33 +22,21 @@ if (el2_login) {
   });
 }
 
-async function login(email, password) {
+async function test(email, password) {
   errEl.classList.add("hidden");
 
-  const res = await fetch("http://127.0.0.1:3033/api/v1/users/login", {
-    method: "POST",
-    credentials: "include",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({
-      email,
-      password,
-    }),
-  });
-
-  const data = await res.json();
-
+  const data = await login(email, password);
   localStorage.setItem("login", true);
+  localStorage.setItem("jwt", data.token);
 
-  if (!res.ok) {
+  if (data.status === "error") {
     errEl.classList.toggle("hidden");
     errEl.textContent = `${data.message}`;
 
     return null;
   }
 
-  window.location.href = "/pages/todos.html";
+  window.location.href = "/";
 }
 
 if (loginBtn) {
@@ -63,6 +53,6 @@ if (loginBtn) {
       return null;
     }
 
-    await login(email, password);
+    await test(email, password);
   });
 }
