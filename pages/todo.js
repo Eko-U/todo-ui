@@ -1,6 +1,6 @@
-import { updateTodoTask, deleteTodoTask } from "../public/apiTask.js";
-import API_URL from "../public/constants.js";
-import { dateFormated } from "../public/helper.js";
+import { updateTodoTask, deleteTodoTask } from "../api/apiTask.js";
+import API_URL from "../api/constants.js";
+import { dateFormated } from "../api/helper.js";
 
 const todoTaskListCompletedContainer = document.querySelector(
   ".todo-task-lists-completed"
