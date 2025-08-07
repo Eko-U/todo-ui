@@ -1,4 +1,4 @@
-import { AVATAR_URL } from "../api/constants.js";
+import { AVATAR_URL } from "../public/constants.js";
 
 const btnUser = document.querySelector(".btn-update-user");
 const avatarImg = document.querySelector("#avatar");

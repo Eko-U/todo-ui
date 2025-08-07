@@ -295,10 +295,6 @@ a:visited {
   padding: 1rem;
   width: 100%;
   display: block;
-
-  @media only screen and (max-width: 28.25em) {
-    width: auto;
-  }
 }
 
 .form-textarea-add {
