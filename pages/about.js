@@ -1,3 +1,4 @@
+import { getCurrentUser, updateCurrentUser } from "../api/apiUser.js";
 import { AVATAR_URL } from "../api/constants.js";
 
 const btnUser = document.querySelector(".btn-update-user");
@@ -19,7 +20,9 @@ if (Boolean(isLoggedIn))
       user_name.value = data.name;
 
       avatar_about.style.display = "block";
-      avatar_about.src = `${AVATAR_URL}/img/avatars/${data.avatar}`;
+      avatar_about.src = `${AVATAR_URL}/${data.avatar}`;
+
+      data.avatar && (dummyAvatarImg.style.display = "none");
 
       avatar_about.style.display = "block !important";
 
@@ -44,52 +47,18 @@ if (Boolean(isLoggedIn))
     }
   })();
 
-(async function () {
-  try {
-    const res = await fetch("http://127.0.0.1:3033/api/v1/users/me", {
-      method: "GET",
-      credentials: "include",
-    });
+const overlay = document.querySelector(".overlay");
+btnUser.addEventListener("click", async function (e) {
+  e.preventDefault();
 
-    if (!res.ok) return;
+  overlay.style.display = "flex";
 
-    const { data } = await res.json();
-
-    email.value = data.email;
-    user_name.value = data.name;
-
-    data.avatar ? (dummyAvatarImg.style.display = "none") : "";
-
-    avatar_about.style.display = "block";
-    avatar_about.src = `http://127.0.0.1:3033/img/avatars/${data.avatar}`;
-
-    avatar_about.style.display = "block !important";
-
-    user_name.textContent = name;
-    navLogin.classList.add("hidden");
-    navSignup.classList.add("hidden");
-    navLogout.classList.remove("hidden");
-    navUserBox.classList.remove("hidden");
-  } catch (error) {
-    return;
-  }
-})();
-
-async function fn() {
   const formData = new FormData();
   formData.append("avatar", avatarImg.files[0]);
 
-  const res = await fetch(`http://127.0.0.1:3033/api/v1/users/updateMe`, {
-    method: "POST",
-    credentials: "include",
-    body: formData,
-  });
+  const data = await updateCurrentUser(formData);
 
-  const data = await res.json();
-  data;
-}
+  if (data.status === "success") window.location.href = "/pages/about.html";
 
-btnUser.addEventListener("click", async function (e) {
-  e.preventDefault();
-  await fn();
+  overlay.style.display = "none";
 });

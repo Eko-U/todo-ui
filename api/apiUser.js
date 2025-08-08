@@ -81,10 +81,7 @@ export async function getCurrentUser() {
   }
 }
 
-export async function updateCurrentUser() {
-  const formData = new FormData();
-  formData.append("avatar", avatarImg.files[0]);
-
+export async function updateCurrentUser(formData) {
   const res = await fetch(`${API_URL}/users/updateMe`, {
     method: "POST",
     credentials: "include",

@@ -18,10 +18,25 @@
     <nav class="nav">
       <a href="/"> <img src="" alt="logo" class="logo" /></a>
       <ul class="nav__list--items">
+        <li class="nav-todo">
+          <a href="../pages/todos.html">Tasks</a>
+        </li>
         <li class="nav-login"><a href="../pages/login.html">Log in</a></li>
         <li class="nav-signup"><a href="../pages/signup.html">sign up</a></li>
         <li class="nav-logout hidden"><a href="">log out</a></li>
       </ul>
+
+      <a href="./about.html">
+        <span class="nav-user hidden">
+          <span class="nav-username"> </span>
+          <ion-icon
+            name="person-circle-outline"
+            class="person-circle-outline"
+          ></ion-icon>
+
+          <img src="" alt="picture of " class="avatar-img hidden" />
+        </span>
+      </a>
     </nav>
 
     <main>
@@ -110,6 +125,9 @@
         </div>
       </div>
     </main>
+    <div class="hidden overlay">
+      <h3>loading...</h3>
+    </div>
 
     <script
       type="module"
