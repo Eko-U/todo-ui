@@ -75,8 +75,6 @@ export async function getCurrentUser() {
 
     const { data } = await res.json();
 
-    console.log(res);
-
     return data;
   } catch (error) {
     return error;

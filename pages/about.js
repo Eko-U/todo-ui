@@ -86,7 +86,7 @@ async function fn() {
   });
 
   const data = await res.json();
-  console.log(data);
+  data;
 }
 
 btnUser.addEventListener("click", async function (e) {

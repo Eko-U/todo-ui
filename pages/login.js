@@ -6,18 +6,9 @@ const el2_login = document.querySelector(".icon-eye-off-login");
 const password_login_el = document.querySelector(".password-login");
 const errEl = document.querySelector(".error");
 
-const overlay = document.querySelector(".overlay");
-
-(async function isLoggedIn() {
-  overlay.style.display = "flex";
-  try {
-    const data = await getCurrentUser();
-    if (!data.active) return;
-    window.location.href = "/pages/todos.html";
-    overlay.style.display = "none";
-  } finally {
-  }
-})();
+if (Boolean(localStorage.getItem("login"))) {
+  window.location.href = "/pages/todos.html";
+}
 
 el_login.addEventListener("click", function (e) {
   el_login.classList.add("hidden");

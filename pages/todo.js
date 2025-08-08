@@ -16,10 +16,9 @@ const btnAddTodoTask = document.querySelector(".btn-add");
 const btnShowTodoForm = document.querySelector(".btn-add-todo");
 const formTodoAddTask = document.querySelector(".form-add-task");
 
-const todoTaskUpdate = document.querySelector(".todo-task-update");
-const todoTaskInput = document.querySelector(".todo-task-input");
-
-const overlay = document.querySelector(".overlay");
+if (!Boolean(localStorage.getItem("login"))) {
+  window.location.href = "/";
+}
 
 (async function () {
   try {
@@ -90,9 +89,6 @@ if (btnAddTodoTask)
 
     btnAddTodoTask.textContent = "loading";
     errEl.classList.add("hidden");
-
-    if (dueDate.value >= dueDate.min) console.log("You can use this date");
-    if (dueDate.value < dueDate.min) console.log("You cannot use this date");
 
     const res = await fetch(`${API_URL}/tasks`, {
       method: "POST",
@@ -179,7 +175,6 @@ if (todoTaskListsContainer || todoTaskListCompletedContainer) {
     if (todoTaskListsContainer)
       todoTaskListsContainer.style.justifyContent = "center";
     if (noTodoTaskEl) {
-      console.log(noTodoTaskEl);
       noTodoTaskEl.classList.toggle("hidden");
       todoTaskListsContainer.style.padding = "10rem 3rem";
       noTodoTaskEl.insertAdjacentHTML(
@@ -226,10 +221,8 @@ if (todoTaskListsContainer || todoTaskListCompletedContainer) {
   });
 
   const taskCompleted = data.data.filter((task) => task.isCompleted);
-  console.log(taskCompleted);
 
   if (taskCompleted.length === 0) {
-    console.log("testting...");
     todoTaskComplete.style.display = "none";
   }
 

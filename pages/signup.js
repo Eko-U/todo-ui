@@ -1,4 +1,4 @@
-import { signup } from "../api/apiUser.js";
+import { getCurrentUser, signup } from "../api/apiUser.js";
 
 const el_signup = document.querySelector(".icon-eye-signup");
 const el2_signup = document.querySelector(".icon-eye-off-signup");
@@ -6,6 +6,12 @@ const password_signup_el = document.querySelector(".password-signup-first");
 const errEl = document.querySelector(".error");
 
 const btn_signup = document.querySelector(".btn-signup");
+
+
+
+if (Boolean(localStorage.getItem("login"))) {
+  window.location.href = "/pages/todos.html";
+}
 
 el_signup.addEventListener("click", function (e) {
   el_signup.classList.add("hidden");
